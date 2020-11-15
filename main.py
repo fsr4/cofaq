@@ -62,7 +62,7 @@ def check_updates(url, message_title, file_key):
         file.writelines(new_response)
 
     # Send update to Slack webhook
-    with open('webhook_url.txt', 'r') as file:
+    with open(f"{project_dir}/webhook_url.txt", "r") as file:
         webhook_url = file.read().replace('\n', '')
     message = {"text": f"*{message_title}*\n{decoded_diff_result}"}
     requests.post(webhook_url, json=message)
